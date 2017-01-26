@@ -1,0 +1,35 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-lg-9">
+                <h3>{{header}}</h3> </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form name="novoUsuario">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" value="" placeholder="Usuario" class="form-control" /> </div>
+            </div>
+            <select ng-init="changeSelect()" id="mounth">
+                <option value="hide">-- Month --</option>
+                <option value="january" rel="icon-temperature">January</option>
+                <option value="february">February</option>
+                <option value="march">March</option>
+                <option value="april">April</option>
+                <option value="may">May</option>
+                <option value="june">June</option>
+                <option value="july">July</option>
+                <option value="august">August</option>
+                <option value="september">September</option>
+                <option value="october">October</option>
+                <option value="november">November</option>
+                <option value="december">Dece </option>
+            </select>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info" ng-click="okContinue()">Salvar</button>
+        <button class="btn btn-danger" ng-click="cancel()">Cancelar</button>
+    </div>
+</div>
