@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" ng-app="valkyrie">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Valkyrie</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!--   Core JS Files   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+    <script src=" https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAh0BjmwZk4Ax2gyTtHTj_abkIf7t7I7SM"
+            , authDomain: "mysimplescrum.firebaseapp.com"
+            , databaseURL: "https://mysimplescrum.firebaseio.com"
+            , storageBucket: "mysimplescrum.appspot.com"
+            , messagingSenderId: "281645322119"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="js/static_values.js"></script>
+    <script src="js/valkyrie.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='css/valkyrie.css' rel='stylesheet' type='text/css'> </head>
+
+<body ng-controller="valkyrieController">
+    <loading ng-show="loading"></loading> {{loading}}
+    <div class="container-fluid">
+        <form name="register_form" class="register-form">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-lg-4">
+                    <label for="password"> POSITION </label>
+                    <select name="position_select" ng-model="model.position" required ng-required="true" ng-options="position.position.toUpperCase() for position in positions">
+                        <option value="">SELECT POSITION</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-lg-4">
+                    <label for="firstName"> NAME </label>
+                    <input name="firstName" class="form-control" type="text" ng-model="model.name" required ng-required="true"> </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-lg-4">
+                    <label for="email"> EMAIL </label>
+                    <input name="email" class="form-control" type="email" ng-model="model.email" required ng-required="true"> </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-lg-4">
+                    <label for="password"> PASSWORD </label>
+                    <input name="password" class="form-control" type="password" ng-model="model.password" ng-minlength="6" required ng-required="true"> </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-lg-4">
+                    <label for="password"> ROLE </label>
+                    <select name="role_select" ng-model="model.role" required ng-required="true" ng-options="role.role.toUpperCase() for role in roles">
+                        <option value="">SELECT ROLE</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-3 col-lg-3"></div>
+                <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+                    <button class="btn btn-default regbutton" ng-click="!register_form.$invalid && register(model)"> REGISTER </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

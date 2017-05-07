@@ -1,0 +1,1 @@
+var cerberus = angular.module('cerberus', []);

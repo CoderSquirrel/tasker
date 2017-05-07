@@ -1,0 +1,1 @@
+var valkyrie = angular.module('valkyrie', []);
