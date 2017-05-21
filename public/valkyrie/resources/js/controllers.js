@@ -16,27 +16,27 @@ valkyrie.controller('valkyrieController', function ($scope) {
         setLoading(true);
         userModel = model;
         console.log("register");
-        firebase.auth().createUserWithEmailAndPassword(model.email, model.password).then(createUserSuccess).catch(createUserError);
+        firebase.auth().createUserWithEmailAndPassword(model.email, model.password).then( $scope.createUserSuccess).catch( $scope.createUserError);
     };
-    var createUserSuccess = function (response) {
+     $scope.createUserSuccess = function (response) {
         setLoading(false);
         userModel.position = userModel.position.id;
         userModel.role = userModel.role.id;
         console.log("createUserSuccess");
-        firebase.database().ref().child(DB).push(userModel).then(createUserInfoSuccess).catch(createUserInfoError);
+        firebase.database().ref().child(DB).push(userModel).then( $scope.createUserInfoSuccess).catch( $scope.createUserInfoError);
     };
-    var createUserError = function (response) {
+     $scope.createUserError = function (response) {
         setLoading(false);
         console.log("createUserError");
         console.log(response);
     };
-    var createUserInfoSuccess = function (response) {
+     $scope.createUserInfoSuccess = function (response) {
         setLoading(false);
         console.log("createUserInfoSuccess");
         $scope.model = {};
         console.log(response, $scope.loading);
     };
-    var createUserInfoError = function (response) {
+ $scope.createUserInfoError = function (response) {
         setLoading(false);
         console.log("createUserInfoError");
         console.log(response, $scope.loading);
